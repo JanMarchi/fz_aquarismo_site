@@ -183,15 +183,38 @@ const Analytics = {
   },
 
   /**
-   * Detecta o dispositivo do usuário
+   * Detecta o sistema operacional do usuário
    */
   detectarDispositivo() {
     const ua = navigator.userAgent;
-    if (/mobile|android|iphone|ipad|phone/i.test(ua.toLowerCase())) {
-      if (/ipad|tablet/i.test(ua.toLowerCase())) return "Tablet";
-      return "Mobile";
+
+    // iOS (iPhone e iPad)
+    if (/iphone|ipad|ipod/i.test(ua)) {
+      return "iOS";
     }
-    return "Desktop";
+
+    // Android
+    if (/android/i.test(ua)) {
+      return "Android";
+    }
+
+    // Windows
+    if (/windows|win32/i.test(ua)) {
+      return "Windows";
+    }
+
+    // macOS
+    if (/macintosh|mac os x/i.test(ua)) {
+      return "macOS";
+    }
+
+    // Linux
+    if (/linux/i.test(ua)) {
+      return "Linux";
+    }
+
+    // Padrão
+    return "Outro";
   },
 
   /**
