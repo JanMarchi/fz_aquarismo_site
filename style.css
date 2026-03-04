@@ -429,9 +429,11 @@ button {
 
 .destaque-card img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 300px;
+  object-fit: contain;
+  object-position: center;
   display: block;
+  background: linear-gradient(135deg, rgba(17, 129, 162, 0.05) 0%, rgba(17, 129, 162, 0.02) 100%);
 }
 
 .destaque-card-content {
@@ -545,10 +547,12 @@ button {
 
 .card-peixe-img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: 240px;
+  object-fit: contain;
+  object-position: center;
   display: block;
   position: relative;
+  background: linear-gradient(135deg, rgba(17, 129, 162, 0.05) 0%, rgba(17, 129, 162, 0.02) 100%);
 }
 
 .card-badge {
@@ -633,15 +637,29 @@ button {
   background: transparent;
   color: var(--color-accent);
   border: 1px solid var(--color-border);
-  padding: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
   font-size: 0.85rem;
   border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.btn-social svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .btn-social:hover {
   background: var(--color-accent);
   color: var(--color-bg-primary);
   border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 /* ========== MODAL ========== */
@@ -837,6 +855,19 @@ button {
   font-size: 1rem;
   font-weight: 700;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-cta svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .modal-cta:hover {
@@ -930,27 +961,34 @@ button {
 .sobre {
   padding: var(--space-2xl) var(--space-xl);
   background-color: var(--color-bg-primary);
+  text-align: center;
 }
 
 .sobre-container {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-2xl);
   align-items: center;
 }
 
 .sobre h2 {
   margin-bottom: var(--space-lg);
+  color: #ffffff;
+  font-size: 2rem;
 }
 
 .sobre p {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: var(--space-md);
+  line-height: 1.8;
+  font-size: 1.05rem;
 }
 
-.sobre-img {
+.sobre-img,
+.sobre-container > div:last-child {
+  display: none;
   width: 100%;
   border-radius: 12px;
   border: 1px solid var(--color-border);
@@ -973,12 +1011,15 @@ button {
 
 .contato h2 {
   margin-bottom: var(--space-lg);
+  color: #ffffff;
+  font-size: 2rem;
 }
 
 .contato p {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: var(--space-2xl);
   font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .contato-buttons {
@@ -990,8 +1031,9 @@ button {
 }
 
 .contato-info {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 /* ========== FOOTER ========== */

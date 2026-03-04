@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Painel Administrativo FZ Aquarismo" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0a0e17" />
+  <link rel="icon" href="img/logo.jpeg" />
+
+  <title>Admin — FZ Aquarismo</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Admin Styles -->
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <!-- ========== TELA DE LOGIN ========== -->
+  <div id="telaLogin" style="display: flex;">
+    <div class="login-container">
+      <div class="login-header">
+        <img src="img/logo.jpeg" alt="FZ Aquarismo" class="login-logo" />
+        <h1 class="login-titulo">Admin</h1>
+        <p class="login-subtitulo">Painel de Gerenciamento</p>
+      </div>
+
+      <!-- Tela de Login -->
+      <div id="telaLoginForm" class="login-form">
+        <div class="login-input-group">
+          <label for="inputEmailLogin">Email</label>
+          <input
+            type="email"
+            id="inputEmailLogin"
+            class="login-input"
+            placeholder="seu@email.com"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="login-input-group">
+          <label for="inputSenhaLogin">Senha</label>
+          <input
+            type="password"
+            id="inputSenhaLogin"
+            class="login-input"
+            placeholder="Digite sua senha"
+            autocomplete="off"
+          />
+        </div>
+
+        <button type="button" class="login-button" onclick="fazerLogin()">
+          Entrar
+        </button>
+
+        <div class="login-erro" id="erroLogin" style="display: none;"></div>
+
+        <div style="margin-top: 16px; text-align: center;">
+          <p style="color: rgba(255, 255, 255, 0.7); font-size: 13px; margin-bottom: 12px;">
+            Não tem uma conta?
+          </p>
+          <button type="button" class="login-button" style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);" onclick="mostrarTelaCadastro()">
+            Criar Conta
+          </button>
+        </div>
+      </div>
+
+      <!-- Tela de Cadastro -->
+      <div id="telaCadastroForm" class="login-form" style="display: none;">
+        <div class="login-input-group">
+          <label for="inputNomeCadastro">Nome Completo</label>
+          <input
+            type="text"
+            id="inputNomeCadastro"
+            class="login-input"
+            placeholder="Seu nome"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="login-input-group">
+          <label for="inputEmailCadastro">Email</label>
+          <input
+            type="email"
+            id="inputEmailCadastro"
+            class="login-input"
+            placeholder="seu@email.com"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="login-input-group">
+          <label for="inputSenhaCadastro">Senha (min. 6 caracteres)</label>
+          <input
+            type="password"
+            id="inputSenhaCadastro"
+            class="login-input"
+            placeholder="Crie uma senha segura"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="login-input-group">
+          <label for="inputSenhaConfirm">Confirmar Senha</label>
+          <input
+            type="password"
+            id="inputSenhaConfirm"
+            class="login-input"
+            placeholder="Confirme a senha"
+            autocomplete="off"
+          />
+        </div>
+
+        <button type="button" class="login-button" onclick="fazerCadastro()">
+          Criar Conta
+        </button>
+
+        <div class="login-erro" id="erroCadastro" style="display: none;"></div>
+
+        <div style="margin-top: 16px; text-align: center;">
+          <button type="button" class="login-button" style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);" onclick="mostrarTelaLogin()">
+            Voltar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PAINEL ADMIN ========== -->
+  <div id="telaPainel" style="display: none;">
+    <!-- Header -->
+    <div class="admin-header">
+      <div class="admin-header-left">
+        <img src="img/logo.jpeg" alt="FZ Aquarismo" class="admin-logo" />
+        <h1 class="admin-titulo">Painel Admin</h1>
+      </div>
+      <div class="admin-header-right">
+        <button type="button" class="btn-admin" style="background: rgba(17, 129, 162, 0.2); color: var(--admin-accent-primary); border: 1px solid var(--admin-accent-primary); padding: 8px 12px; font-size: 12px;" onclick="abrirModalAlterarSenha()">🔐 Alterar Senha</button>
+        <button type="button" class="btn-sair" onclick="sair()">Sair</button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="admin-content">
+      <!-- Ações -->
+      <div class="admin-actions">
+        <button type="button" class="btn-novo" onclick="abrirModalAdicao()">
+          ➕ Adicionar Novo Peixe
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="admin-stats">
+        <div class="admin-stat-card">
+          <div class="admin-stat-numero" id="statTotal">0</div>
+          <div class="admin-stat-label">Total de Peixes</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-numero" id="statDisponivel">0</div>
+          <div class="admin-stat-label">Disponíveis</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-numero" id="statDestaque">0</div>
+          <div class="admin-stat-label">Em Destaque</div>
+        </div>
+      </div>
+
+      <!-- Lista de Peixes -->
+      <div id="listaPeixes"></div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL DE FORMULÁRIO ========== -->
+  <div id="modalOverlay" style="display: none;">
+    <div class="modal-conteudo">
+      <div class="modal-header">
+        <h2 class="modal-titulo" id="modalTitulo">Adicionar Novo Peixe</h2>
+        <button type="button" class="modal-close" onclick="fecharModal()">✕</button>
+      </div>
+
+      <form class="modal-form" id="formularioPeixe" onsubmit="event.preventDefault(); salvarPeixe();">
+        <!-- Campo oculto para ID (edição) -->
+        <input type="hidden" id="modalFormId" />
+
+        <!-- Nome -->
+        <div class="form-group">
+          <label class="form-label" for="inputNome">Nome Comum *</label>
+          <input type="text" id="inputNome" class="form-input" required />
+        </div>
+
+        <!-- Nome Científico -->
+        <div class="form-group">
+          <label class="form-label" for="inputNomeCientifico">Nome Científico</label>
+          <input type="text" id="inputNomeCientifico" class="form-input" />
+        </div>
+
+        <!-- Categoria e Subcategoria -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inputCategoria">Categoria</label>
+            <input type="text" id="inputCategoria" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputSubcategoria">Subcategoria</label>
+            <input type="text" id="inputSubcategoria" class="form-input" />
+          </div>
+        </div>
+
+        <!-- Descrição -->
+        <div class="form-group">
+          <label class="form-label" for="inputDescricao">Descrição</label>
+          <textarea id="inputDescricao" class="form-textarea"></textarea>
+        </div>
+
+        <!-- Tamanho, pH, Temperatura -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inputTamanho">Tamanho</label>
+            <input type="text" id="inputTamanho" class="form-input" placeholder="ex: 10–15 cm" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputPH">pH</label>
+            <input type="text" id="inputPH" class="form-input" placeholder="ex: 7.8 – 8.5" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputTemperatura">Temperatura</label>
+          <input type="text" id="inputTemperatura" class="form-input" placeholder="ex: 24 – 28°C" />
+        </div>
+
+        <!-- Dificuldade e Temperamento -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inputDificuldade">Dificuldade</label>
+            <select id="inputDificuldade" class="form-select">
+              <option value="Iniciante">Iniciante</option>
+              <option value="Intermediário">Intermediário</option>
+              <option value="Avançado">Avançado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputTemperamento">Temperamento</label>
+            <input type="text" id="inputTemperamento" class="form-input" />
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-group">
+          <label class="form-label" for="inputTags">Tags (separadas por vírgula)</label>
+          <input type="text" id="inputTags" class="form-input" placeholder="ex: malawi, ciclídeo, azul" />
+        </div>
+
+        <!-- Upload de Imagem -->
+        <div class="form-upload">
+          <label class="form-label" for="inputImagem">Imagem (máx 800px de largura)</label>
+          <input type="file" id="inputImagem" class="upload-input" accept="image/*" />
+          <div id="previewImagem"></div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="form-checkboxes">
+          <label class="form-checkbox">
+            <input type="checkbox" id="checkDisponivel" checked />
+            <span>Disponível</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="checkDestaque" />
+            <span>Em Destaque</span>
+          </label>
+        </div>
+
+        <!-- Botões -->
+        <div class="modal-actions">
+          <button type="submit" class="btn-modal btn-salvar">Salvar</button>
+          <button type="button" class="btn-modal btn-cancelar" onclick="fecharModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== MODAL ALTERAR SENHA ========== -->
+  <div id="modalAlterarSenhaOverlay" style="display: none;">
+    <div class="modal-conteudo" style="max-width: 400px;">
+      <div class="modal-header">
+        <h2 class="modal-titulo">Alterar Senha</h2>
+        <button type="button" class="modal-close" onclick="fecharModalAlterarSenha()">✕</button>
+      </div>
+
+      <form class="modal-form" onsubmit="event.preventDefault(); processarAlterarSenha();">
+        <div class="form-group">
+          <label class="form-label" for="inputSenhaAtual">Senha Atual</label>
+          <input type="password" id="inputSenhaAtual" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputNovaSenha">Nova Senha (min. 6 caracteres)</label>
+          <input type="password" id="inputNovaSenha" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputConfirmNovaSenha">Confirmar Nova Senha</label>
+          <input type="password" id="inputConfirmNovaSenha" class="form-input" required />
+        </div>
+
+        <div id="erroAlterarSenha" style="display: none; padding: 12px; background: rgba(231, 76, 60, 0.15); border: 1px solid #e74c3c; border-radius: 8px; color: #ff6b6b; font-size: 13px; margin-bottom: 12px;"></div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn-modal btn-salvar">Alterar Senha</button>
+          <button type="button" class="btn-modal btn-cancelar" onclick="fecharModalAlterarSenha()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="catalogo.js"></script>
+  <script src="auth.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

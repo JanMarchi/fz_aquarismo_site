@@ -1,0 +1,62 @@
+/* icons.css — Estilos para ícones SVG */
+
+/* Ícones em botões */
+.btn svg {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Ícones em links */
+a[href*="instagram.com"] svg,
+a[href*="wa.me"] svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-right: 4px;
+  transition: all 0.2s ease;
+}
+
+a[href*="instagram.com"]:hover svg,
+a[href*="wa.me"]:hover svg {
+  transform: scale(1.15);
+}
+
+/* Footer links com ícones */
+footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--color-accent);
+}
+
+footer a svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Modal buttons com ícones */
+#modalContato .btn svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* Contato buttons com ícones */
+.contato-buttons .btn svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
