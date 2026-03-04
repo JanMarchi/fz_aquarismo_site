@@ -1,0 +1,214 @@
+/**
+ * Button Component
+ * Atomic Design: ATOM
+ *
+ * Variants:
+ * - Primary (CTA - Call To Action)
+ * - Secondary (Alternative action)
+ * - Ghost (Minimal, outline)
+ *
+ * States: default, hover, active, disabled, focus
+ * Sizes: small, medium (default), large
+ */
+
+.btn {
+  /* Base styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-in-out);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+
+  /* Accessibility */
+  position: relative;
+}
+
+/* ========== VARIANTS ========== */
+
+/* Primary - Main Call To Action */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-0);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.2);
+}
+
+/* Secondary - Alternative Action */
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-neutral-0);
+  border-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 163, 102, 0.2);
+}
+
+/* Ghost - Minimal Button */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-ghost:hover {
+  background-color: rgba(0, 102, 204, 0.1);
+  border-color: var(--color-primary-dark);
+  color: var(--color-primary-dark);
+}
+
+.btn-ghost:active {
+  background-color: rgba(0, 102, 204, 0.2);
+}
+
+.btn-ghost:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.2);
+}
+
+/* ========== SIZES ========== */
+
+.btn-sm {
+  padding: 4px 12px;
+  font-size: var(--font-size-sm);
+}
+
+.btn-md {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-lg);
+  min-height: 48px;
+}
+
+/* ========== STATES ========== */
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn:disabled:hover {
+  box-shadow: none;
+}
+
+/* Loading state */
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn.is-loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== ICON SUPPORT ========== */
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-md);
+}
+
+.btn-icon.btn-lg {
+  width: 48px;
+  height: 48px;
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========== DARK MODE ========== */
+
+body.dark-mode .btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+body.dark-mode .btn-secondary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+body.dark-mode .btn-secondary:hover {
+  background-color: var(--color-secondary-light);
+  border-color: var(--color-secondary-light);
+}
+
+body.dark-mode .btn-ghost {
+  color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+body.dark-mode .btn-ghost:hover {
+  background-color: rgba(51, 153, 255, 0.2);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}

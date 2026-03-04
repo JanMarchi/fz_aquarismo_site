@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FZ Aquarismo — Design System Guide</title>
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="style-vars.css">
+  <link rel="stylesheet" href="components/button.css">
+  <link rel="stylesheet" href="components/card.css">
+  <link rel="stylesheet" href="components/badge.css">
+  <link rel="stylesheet" href="components/input.css">
+  <link rel="stylesheet" href="components/modal.css">
+  <link rel="stylesheet" href="components/navigation.css">
+  <link rel="stylesheet" href="components/footer.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: var(--spacing-2xl) var(--container-padding);
+      width: 100%;
+    }
+
+    .section {
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .section-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-lg);
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: var(--spacing-md);
+    }
+
+    .subsection {
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .subsection-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-md);
+      color: var(--color-neutral-800);
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .color-swatch {
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      color: var(--color-neutral-900);
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-sm);
+    }
+
+    .code-block {
+      background-color: var(--color-neutral-100);
+      border: 1px solid var(--color-neutral-300);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      font-family: var(--font-mono);
+      font-size: var(--font-size-sm);
+      overflow-x: auto;
+      color: var(--color-neutral-800);
+      margin: var(--spacing-md) 0;
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: var(--spacing-lg);
+      right: var(--spacing-lg);
+      z-index: 50;
+    }
+
+    .button-showcase,
+    .badge-showcase,
+    .card-showcase {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .input-showcase {
+      max-width: 400px;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      color: var(--color-neutral-0);
+      padding: var(--spacing-3xl) var(--spacing-2xl);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-2xl);
+      text-align: center;
+    }
+
+    .hero h1 {
+      color: var(--color-neutral-0);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hero p {
+      font-size: var(--font-size-lg);
+      margin-bottom: 0;
+      opacity: 0.95;
+    }
+
+    body.dark-mode .code-block {
+      background-color: var(--color-neutral-900);
+      border-color: var(--color-neutral-800);
+      color: var(--color-neutral-100);
+    }
+
+    body.dark-mode .color-swatch {
+      color: var(--color-neutral-100);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<header>
+  <nav>
+    <a href="#" class="logo">🐠 FZ Aquarismo</a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#colors">Cores</a></li>
+      <li class="nav-item"><a href="#typography">Tipografia</a></li>
+      <li class="nav-item"><a href="#buttons">Botões</a></li>
+      <li class="nav-item"><a href="#badges">Badges</a></li>
+      <li class="nav-item"><a href="#inputs">Inputs</a></li>
+      <li class="nav-item"><a href="#cards">Cards</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo escuro">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>FZ Aquarismo Design System v1.0</h1>
+    <p>Design tokens, componentes reutilizáveis e documentação</p>
+  </div>
+
+  <!-- Colors Section -->
+  <section id="colors" class="section">
+    <h2 class="section-title">🎨 Paleta de Cores</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Cores Primárias</h3>
+      <div class="component-grid">
+        <div class="color-swatch" style="background-color: var(--color-primary);">Primary<br>#0066cc</div>
+        <div class="color-swatch" style="background-color: var(--color-primary-light);">Primary Light<br>#3399ff</div>
+        <div class="color-swatch" style="background-color: var(--color-primary-dark);">Primary Dark<br>#003d99</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Cores Secundárias</h3>
+      <div class="component-grid">
+        <div class="color-swatch" style="background-color: var(--color-secondary);">Secondary<br>#00a366</div>
+        <div class="color-swatch" style="background-color: var(--color-secondary-light);">Secondary Light<br>#33cc99</div>
+        <div class="color-swatch" style="background-color: var(--color-secondary-dark);">Secondary Dark<br>#006644</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Cores de Alerta</h3>
+      <div class="component-grid">
+        <div class="color-swatch" style="background-color: var(--color-success);">Success<br>#10b981</div>
+        <div class="color-swatch" style="background-color: var(--color-warning);">Warning<br>#f59e0b</div>
+        <div class="color-swatch" style="background-color: var(--color-error);">Error<br>#ef4444</div>
+        <div class="color-swatch" style="background-color: var(--color-info);">Info<br>#3b82f6</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography Section -->
+  <section id="typography" class="section">
+    <h2 class="section-title">📝 Tipografia</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Fontes</h3>
+      <p><strong>Headings:</strong> Poppins (profissional, elegante)</p>
+      <p><strong>Body:</strong> Inter (legível, técnico)</p>
+      <p><strong>Mono:</strong> Fira Code (código)</p>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Escalas</h3>
+      <h1>Heading 1 (48px)</h1>
+      <h2>Heading 2 (32px)</h2>
+      <h3>Heading 3 (24px)</h3>
+      <p>Body text (16px) — Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <small style="font-size: var(--font-size-sm);">Small text (14px) — Metadata, captions, secondary information</small>
+    </div>
+  </section>
+
+  <!-- Buttons Section -->
+  <section id="buttons" class="section">
+    <h2 class="section-title">🔘 Botões</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Variantes</h3>
+      <div class="button-showcase">
+        <button class="btn btn-primary">Primário</button>
+        <button class="btn btn-secondary">Secundário</button>
+        <button class="btn btn-ghost">Ghost</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Tamanhos</h3>
+      <div class="button-showcase">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary btn-md">Medium</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Estados</h3>
+      <div class="button-showcase">
+        <button class="btn btn-primary">Normal</button>
+        <button class="btn btn-primary" disabled>Desabilitado</button>
+        <button class="btn btn-primary is-loading">Carregando...</button>
+      </div>
+    </div>
+
+    <div class="code-block">
+&lt;button class="btn btn-primary"&gt;Primário&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secundário&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;Ghost&lt;/button&gt;</div>
+  </section>
+
+  <!-- Badges Section -->
+  <section id="badges" class="section">
+    <h2 class="section-title">🏷️ Badges</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Variantes</h3>
+      <div class="badge-showcase">
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-secondary">Secondary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-error">Error</span>
+        <span class="badge badge-info">Info</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+&lt;span class="badge badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="badge badge-success"&gt;Success&lt;/span&gt;</div>
+  </section>
+
+  <!-- Inputs Section -->
+  <section id="inputs" class="section">
+    <h2 class="section-title">📝 Formulários</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Text Input</h3>
+      <div class="input-showcase">
+        <div class="input-group">
+          <label for="example-input">Nome</label>
+          <input type="text" id="example-input" placeholder="Digite seu nome...">
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Select</h3>
+      <div class="input-showcase">
+        <div class="input-group">
+          <label for="example-select">Categoria</label>
+          <select id="example-select">
+            <option>Selecione uma categoria...</option>
+            <option>Peixes Africanos</option>
+            <option>Peixes Asiáticos</option>
+            <option>Plantas Aquáticas</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Textarea</h3>
+      <div class="input-showcase">
+        <div class="input-group">
+          <label for="example-textarea">Mensagem</label>
+          <textarea id="example-textarea" placeholder="Digite sua mensagem..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block">
+&lt;div class="input-group"&gt;
+  &lt;label for="name"&gt;Nome&lt;/label&gt;
+  &lt;input type="text" id="name"&gt;
+&lt;/div&gt;</div>
+  </section>
+
+  <!-- Cards Section -->
+  <section id="cards" class="section">
+    <h2 class="section-title">🃏 Cards</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Card Padrão</h3>
+      <div class="component-grid">
+        <div class="card card-interactive">
+          <img src="https://via.placeholder.com/300x200?text=Peixe+Vermelho" alt="Peixe Vermelho" class="card-image">
+          <div class="card-body">
+            <h3 class="card-title">Aulonocara Eureka</h3>
+            <p class="card-description">Peixe africano colorido, ideal para aquários comunitários.</p>
+            <div style="display: flex; gap: var(--spacing-sm);">
+              <span class="badge badge-secondary">Malawi</span>
+              <span class="badge badge-success">Intermediário</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-interactive">
+          <img src="https://via.placeholder.com/300x200?text=Peixe+Azul" alt="Peixe Azul" class="card-image">
+          <div class="card-body">
+            <h3 class="card-title">Ramirezi</h3>
+            <p class="card-description">Pequeno e elegante, perfeito para aquários plantados.</p>
+            <div style="display: flex; gap: var(--spacing-sm);">
+              <span class="badge badge-primary">Pequeno</span>
+              <span class="badge badge-secondary">Iniciante</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block">
+&lt;div class="card card-interactive"&gt;
+  &lt;img src="..." class="card-image" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3 class="card-title"&gt;Título&lt;/h3&gt;
+    &lt;p class="card-description"&gt;...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+  </section>
+
+  <!-- Acessibilidade -->
+  <section class="section">
+    <h2 class="section-title">♿ Acessibilidade</h2>
+    <div class="subsection">
+      <h3 class="subsection-title">Conformidade WCAG 2.1 AA</h3>
+      <ul>
+        <li><strong>Contraste:</strong> Mínimo 4.5:1 para texto normal</li>
+        <li><strong>Teclado:</strong> Todos os elementos navegáveis via Tab</li>
+        <li><strong>ARIA:</strong> Labels semânticos e roles</li>
+        <li><strong>Screen Reader:</strong> Testado com NVDA e VoiceOver</li>
+        <li><strong>Sem dependência de cor:</strong> Informação transmitida por cor + ícone/texto</li>
+        <li><strong>Redução de movimento:</strong> Respeita <code>prefers-reduced-motion</code></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <p class="footer-logo">🐠 FZ Aquarismo</p>
+      <p class="footer-description">Site profissional de catálogo de peixes ornamentais com design system moderno.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#colors">Design System</a></li>
+        <li><a href="docs/design-system/README.md">Documentação</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contato</h3>
+      <ul>
+        <li><a href="https://wa.me/5541999999999">WhatsApp</a></li>
+        <li><a href="https://instagram.com/fz_aquarismo">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="copyright">&copy; 2026 FZ Aquarismo. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Dark Mode Toggle Script -->
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+
+  // Dark mode
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+  });
+
+  // Load saved theme
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️';
+  }
+
+  // Mobile menu toggle
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('is-open');
+    hamburger.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', navMenu.classList.contains('is-open'));
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('.nav-item a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('is-open');
+      hamburger.classList.remove('is-open');
+    });
+  });
+</script>
+
+</body>
+</html>

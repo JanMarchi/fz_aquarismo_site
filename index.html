@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Peixes ornamentais selecionados. Ciclídeos, Bettas, Tetras e muito mais. Entre em contato pelo WhatsApp ou Instagram @fz_aquarismo."
+    />
+    <meta property="og:title" content="FZ Aquarismo" />
+    <meta
+      property="og:description"
+      content="Catálogo de peixes ornamentais de qualidade"
+    />
+    <meta property="og:image" content="img/logo.jpeg" />
+    <meta name="theme-color" content="#000F27" />
+    <link rel="icon" href="img/logo.jpeg" />
+
+    <title>FZ Aquarismo — Peixes Ornamentais</title>
+
+    <!-- Google Fonts com preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Nunito:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <!-- Estilos do site -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="integration.css" />
+  </head>
+  <body>
+    <!-- ========== SEÇÃO 1: NAVBAR ========== -->
+    <nav class="navbar">
+      <img src="img/logo.jpeg" alt="FZ Aquarismo Logo" class="navbar-logo" />
+      <div class="navbar-menu">
+        <a href="#inicio">Início</a>
+        <a href="#destaques">Destaques</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <button
+          class="navbar-cta"
+          onclick="abrirModalContato()"
+          aria-label="Entre em contato"
+        >
+          Entre em contato
+        </button>
+      </div>
+      <button
+        class="navbar-hamburger"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- ========== SEÇÃO 2: HERO ========== -->
+    <section class="hero" id="inicio">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="hero-content">
+        <h1>🐠 Os melhores peixes para o seu aquário</h1>
+        <p>Espécies selecionadas · Qualidade garantida · Entrega combinada</p>
+      </div>
+    </section>
+
+    <!-- ========== SEÇÃO 3: DESTAQUES ========== -->
+    <section class="destaques" id="destaques">
+      <h2>Peixes em Destaque</h2>
+      <div class="destaque-carousel"></div>
+    </section>
+
+    <!-- ========== SEÇÃO 4: CATÁLOGO ========== -->
+    <section class="catalogo" id="catalogo">
+      <h2>Catálogo Completo</h2>
+
+      <div class="filtros">
+        <input
+          type="text"
+          class="busca-input"
+          placeholder="🔍 Buscar por nome, espécie ou tag..."
+        />
+
+        <div class="filtros-grupo">
+          <span class="filtros-label">Dificuldade:</span>
+          <button class="filtro-btn" onclick="filtrarDificuldade(null)">
+            Todos
+          </button>
+          <button class="filtro-btn" onclick="filtrarDificuldade('Iniciante')">
+            Iniciante
+          </button>
+          <button
+            class="filtro-btn"
+            onclick="filtrarDificuldade('Intermediário')"
+          >
+            Intermediário
+          </button>
+          <button class="filtro-btn" onclick="filtrarDificuldade('Avançado')">
+            Avançado
+          </button>
+        </div>
+
+        <div class="contador">-</div>
+      </div>
+
+      <div class="grid-catalogo"></div>
+    </section>
+
+    <!-- ========== SEÇÃO 5: MODAL ========== -->
+    <div class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal"></div>
+    </div>
+
+    <!-- ========== SEÇÃO 6: LIGHTBOX ========== -->
+    <div class="lightbox-overlay" role="dialog" aria-modal="true">
+      <div class="lightbox-container">
+        <img class="lightbox-img" alt="Imagem em destaque" />
+        <button
+          class="lightbox-nav prev"
+          onclick="imagemAnteriorLightbox()"
+          aria-label="Imagem anterior"
+        >
+          ❮
+        </button>
+        <button
+          class="lightbox-nav next"
+          onclick="proximaImagemLightbox()"
+          aria-label="Próxima imagem"
+        >
+          ❯
+        </button>
+        <button
+          class="lightbox-close"
+          onclick="fecharLightbox()"
+          aria-label="Fechar lightbox"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== MODAL DE CONTATO ========== -->
+    <div class="modal-overlay" id="modalContatoOverlay" role="dialog" aria-modal="true">
+      <div class="modal" id="modalContato" style="max-width: 400px;">
+        <button class="modal-close" onclick="fecharModalContato()">✕</button>
+        <div class="modal-content" style="padding: var(--space-2xl) var(--space-xl); text-align: center;">
+          <h3 style="margin-bottom: var(--space-xl);">Escolha seu canal preferido</h3>
+          <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
+            <button class="btn btn-primary" onclick="abrirWhatsApp('aquário')" style="width: 100%;">
+              💬 WhatsApp
+            </button>
+            <button class="btn btn-secondary" onclick="abrirInstagram()" style="width: 100%;">
+              📷 Instagram Direct
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SEÇÃO 7: SOBRE ========== -->
+    <section class="sobre" id="sobre">
+      <div class="sobre-container">
+        <div>
+          <h2>Sobre a FZ Aquarismo</h2>
+          <p>
+            Somos especializados em peixes ornamentais de alta qualidade,
+            selecionados com cuidado para garantir a saúde e beleza de cada
+            espécie. Com anos de experiência, oferecemos espécies variadas para
+            todos os tipos de aquaristas.
+          </p>
+          <p>
+            Nosso compromisso é fornecer peixes saudáveis e bem aclimatados,
+            além de orientação completa para montar e manter seu aquário.
+          </p>
+        </div>
+        <div
+          style="background: linear-gradient(135deg, #1181A2, #01244D); border-radius: 12px;"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ========== SEÇÃO 8: CONTATO ========== -->
+    <section class="contato" id="contato">
+      <div class="contato-container">
+        <h2>Pronto para montar o aquário dos seus sonhos?</h2>
+        <p>Entre em contato conosco pelo WhatsApp ou Instagram!</p>
+
+        <div class="contato-buttons">
+          <button class="btn btn-primary" onclick="abrirWhatsApp('aquário')">
+            💬 Falar no WhatsApp agora
+          </button>
+          <button class="btn btn-secondary" onclick="abrirInstagram()">
+            📷 Seguir no Instagram
+          </button>
+        </div>
+
+        <div class="contato-info">
+          <p>Atendimento de segunda a sexta, das 9h às 18h</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SEÇÃO 9: FOOTER ========== -->
+    <footer>
+      <p>&copy; 2026 FZ Aquarismo. Catálogo de peixes ornamentais ·
+      <a href="https://instagram.com/fz_aquarismo">Instagram</a> ·
+      <a href="https://wa.me/5541999999999">WhatsApp</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="catalogo.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

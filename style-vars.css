@@ -1,0 +1,259 @@
+/**
+ * FZ Aquarismo Design System v1.0
+ * CSS Custom Properties (Design Tokens)
+ *
+ * Variables organized by category:
+ * - Colors (primary, secondary, neutral, alert)
+ * - Typography (font families, sizes, weights)
+ * - Spacing (padding, margin scale)
+ * - Shadows (elevation system)
+ * - Border radius (roundness scale)
+ * - Animations (transitions, durations)
+ */
+
+:root {
+  /* ========== COLORS ========== */
+
+  /* Aquarismo Theme - Water & Nature Inspired */
+  --color-primary: #0066cc;          /* Azul profundo (confiança, técnico) */
+  --color-primary-light: #3399ff;    /* Azul claro (lighter accent) */
+  --color-primary-dark: #003d99;     /* Azul escuro (darker accent) */
+
+  --color-secondary: #00a366;        /* Verde aquático (crescimento, vida) */
+  --color-secondary-light: #33cc99;  /* Verde claro */
+  --color-secondary-dark: #006644;   /* Verde escuro */
+
+  /* Neutral Palette */
+  --color-neutral-900: #0a0e27;      /* Preto com tom azul (texto principal) */
+  --color-neutral-800: #1a1f3a;      /* Cinza muito escuro */
+  --color-neutral-700: #2d3548;      /* Cinza escuro */
+  --color-neutral-600: #4a5568;      /* Cinza médio */
+  --color-neutral-500: #718096;      /* Cinza */
+  --color-neutral-400: #a0aec0;      /* Cinza claro */
+  --color-neutral-300: #cbd5e0;      /* Cinza muito claro */
+  --color-neutral-200: #e2e8f0;      /* Cinza super claro */
+  --color-neutral-100: #f7fafc;      /* Cinza quase branco */
+  --color-neutral-0: #ffffff;        /* Branco puro */
+
+  /* Alert Colors */
+  --color-success: #10b981;          /* Verde sucesso */
+  --color-warning: #f59e0b;          /* Amarelo aviso */
+  --color-error: #ef4444;            /* Vermelho erro */
+  --color-info: #3b82f6;             /* Azul informação */
+
+  /* ========== TYPOGRAPHY ========== */
+
+  /* Font Families */
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Fira Code', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 12px;      /* Small labels, helpers */
+  --font-size-sm: 14px;      /* Small text, captions */
+  --font-size-base: 16px;    /* Body text (default) */
+  --font-size-lg: 18px;      /* Large text, UI emphasis */
+  --font-size-xl: 24px;      /* Subheadings */
+  --font-size-2xl: 32px;     /* Headings */
+  --font-size-3xl: 48px;     /* Large headings */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+
+  /* ========== SPACING ========== */
+  /* Base unit: 4px (mobile-first scalable) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* ========== SHADOWS (Elevation System) ========== */
+  --shadow-sm: 0 1px 2px 0 rgba(10, 14, 39, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(10, 14, 39, 0.1), 0 2px 4px -1px rgba(10, 14, 39, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(10, 14, 39, 0.1), 0 4px 6px -2px rgba(10, 14, 39, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(10, 14, 39, 0.1), 0 10px 10px -5px rgba(10, 14, 39, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(10, 14, 39, 0.25);
+
+  /* ========== BORDER RADIUS ========== */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ========== ANIMATIONS ========== */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ========== CONTAINER ========== */
+  --container-max-width: 1400px;
+  --container-padding: var(--spacing-md);
+}
+
+/* ========== DARK MODE ========== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Colors - inverted for dark mode */
+    --color-neutral-900: #f7fafc;    /* Light text on dark bg */
+    --color-neutral-800: #e2e8f0;
+    --color-neutral-700: #cbd5e0;
+    --color-neutral-600: #a0aec0;
+    --color-neutral-500: #718096;
+    --color-neutral-400: #4a5568;
+    --color-neutral-300: #2d3548;
+    --color-neutral-200: #1a1f3a;
+    --color-neutral-100: #0f1419;
+    --color-neutral-0: #0a0e27;
+
+    /* Primary colors - slightly adjusted for dark bg */
+    --color-primary: #3399ff;
+    --color-primary-light: #66b3ff;
+    --color-primary-dark: #0052a3;
+
+    --color-secondary: #33cc99;
+    --color-secondary-light: #66e6bb;
+    --color-secondary-dark: #009966;
+
+    /* Shadows - inverted */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ========== DARK MODE CLASS (Manual Toggle) ========== */
+body.dark-mode {
+  color-scheme: dark;
+  --color-neutral-900: #f7fafc;
+  --color-neutral-800: #e2e8f0;
+  --color-neutral-700: #cbd5e0;
+  --color-neutral-600: #a0aec0;
+  --color-neutral-500: #718096;
+  --color-neutral-400: #4a5568;
+  --color-neutral-300: #2d3548;
+  --color-neutral-200: #1a1f3a;
+  --color-neutral-100: #0f1419;
+  --color-neutral-0: #0a0e27;
+
+  --color-primary: #3399ff;
+  --color-primary-light: #66b3ff;
+  --color-primary-dark: #0052a3;
+
+  --color-secondary: #33cc99;
+  --color-secondary-light: #66e6bb;
+  --color-secondary-dark: #009966;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+/* ========== GLOBAL STYLES (Applied to all elements) ========== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-900);
+  background-color: var(--color-neutral-0);
+  transition: background-color var(--duration-normal) var(--ease-in-out),
+              color var(--duration-normal) var(--ease-in-out);
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin: 0;
+  color: var(--color-neutral-900);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-in-out);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ========== ACCESSIBILITY ========== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  --color-primary: #0033cc;
+  --color-secondary: #008844;
+  --color-neutral-600: #333333;
+}

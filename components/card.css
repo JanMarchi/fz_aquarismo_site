@@ -1,0 +1,199 @@
+/**
+ * Card Component
+ * Atomic Design: ATOM/MOLECULE
+ *
+ * Flexible container with optional image, title, content
+ * Used for: product cards, articles, team members, etc.
+ *
+ * States: default, hover, focus
+ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-neutral-0);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-in-out);
+  height: 100%;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ========== CARD PARTS ========== */
+
+.card-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.card-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  flex: 1;
+  padding: var(--spacing-md);
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--color-neutral-900);
+  line-height: var(--line-height-tight);
+}
+
+.card-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.card-description {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-700);
+  line-height: var(--line-height-normal);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.card-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-neutral-200);
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ========== CARD VARIANTS ========== */
+
+/* Elevated card - more prominent shadow */
+.card.card-elevated {
+  box-shadow: var(--shadow-lg);
+}
+
+.card.card-elevated:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Interactive card - clickable */
+.card.card-interactive {
+  cursor: pointer;
+}
+
+.card.card-interactive:hover {
+  background-color: var(--color-neutral-50);
+}
+
+/* Flat card - no shadow */
+.card.card-flat {
+  box-shadow: none;
+  border: 1px solid var(--color-neutral-200);
+}
+
+.card.card-flat:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========== OVERLAY EFFECT ========== */
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 14, 39, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-in-out);
+  z-index: 10;
+  border-radius: var(--radius-lg);
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-overlay-content {
+  color: var(--color-neutral-0);
+  text-align: center;
+}
+
+.card-overlay-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ========== GRID ========== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+
+  /* Mobile landscape */
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Wide */
+  @media (min-width: 1441px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ========== DARK MODE ========== */
+
+body.dark-mode .card {
+  background-color: var(--color-neutral-0);
+  color: var(--color-neutral-900);
+}
+
+body.dark-mode .card-header,
+body.dark-mode .card-footer {
+  border-bottom-color: var(--color-neutral-800);
+  border-top-color: var(--color-neutral-800);
+}
+
+body.dark-mode .card.card-interactive:hover {
+  background-color: var(--color-neutral-100);
+}
+
+body.dark-mode .card-overlay {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.dark-mode .card-overlay-title,
+body.dark-mode .card-overlay-content {
+  color: var(--color-neutral-900);
+}

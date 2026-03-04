@@ -1,0 +1,385 @@
+/**
+ * Integration CSS - Melhorias de design preservando estilo original
+ *
+ * Complementa o style.css original com:
+ * - Cards melhorados
+ * - Filtros mais visuais
+ * - Galeria responsiva
+ * - Dark mode opcional
+ */
+
+/* ========== GALERIA MELHORADA ========== */
+
+.grid-catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+@media (max-width: 1024px) {
+  .grid-catalogo {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-catalogo {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ========== CARDS MELHORADOS ========== */
+
+.card {
+  background: rgba(1, 36, 77, 0.7);
+  border: 1px solid rgba(74, 180, 242, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(74, 180, 242, 0.5);
+  box-shadow: 0 15px 40px rgba(17, 129, 162, 0.3);
+}
+
+.card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #55CAFF;
+  margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: rgba(74, 180, 242, 0.25);
+  color: #4AB4F2;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.25);
+  color: #10b981;
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.25);
+  color: #f59e0b;
+}
+
+.badge-error {
+  background: rgba(239, 68, 68, 0.25);
+  color: #ef4444;
+}
+
+/* ========== FILTROS MELHORADOS ========== */
+
+.filtros {
+  background: linear-gradient(135deg, rgba(1, 36, 77, 0.5), rgba(17, 129, 162, 0.2));
+  border: 1px solid rgba(74, 180, 242, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.busca-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(74, 180, 242, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.busca-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.busca-input:focus {
+  outline: none;
+  border-color: #55CAFF;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(85, 202, 255, 0.3);
+}
+
+.filtros-grupo {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filtros-label {
+  color: #55CAFF;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.filtro-btn {
+  padding: 0.6rem 1.2rem;
+  background: rgba(74, 180, 242, 0.2);
+  border: 2px solid rgba(74, 180, 242, 0.4);
+  color: #4AB4F2;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.filtro-btn:hover {
+  background: rgba(74, 180, 242, 0.3);
+  border-color: #55CAFF;
+  color: #55CAFF;
+}
+
+.filtro-btn.active {
+  background: linear-gradient(135deg, #1181A2, #55CAFF);
+  color: white;
+  border-color: #55CAFF;
+}
+
+.contador {
+  color: #4AB4F2;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ========== MODAL MELHORADO ========== */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal {
+  background: linear-gradient(135deg, #01244D, #000F27);
+  border: 1px solid rgba(74, 180, 242, 0.3);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(17, 129, 162, 0.4);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #55CAFF;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: white;
+}
+
+.modal-content {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* ========== HERO SECTIONS ========== */
+
+.hero {
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.destaques,
+.catalogo,
+.sobre,
+.contato {
+  padding: 3rem 2rem;
+}
+
+.destaques h2,
+.catalogo h2,
+.sobre h2,
+.contato h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #1181A2, #55CAFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.destaque-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* ========== DARK MODE (Opcional) ========== */
+
+body.dark-mode {
+  --color-bg-primary: #1a1a2e;
+  --color-bg-secondary: #16213e;
+  --color-card-bg: rgba(22, 33, 62, 0.9);
+  --color-text-primary: #e0e0e0;
+  --color-text-muted: rgba(224, 224, 224, 0.6);
+}
+
+body.dark-mode .card {
+  background: rgba(22, 33, 62, 0.9);
+}
+
+body.dark-mode .modal {
+  background: linear-gradient(135deg, #16213e, #1a1a2e);
+}
+
+body.dark-mode .filtros {
+  background: linear-gradient(135deg, rgba(22, 33, 62, 0.7), rgba(26, 26, 46, 0.5));
+}
+
+/* ========== ACESSIBILIDADE ========== */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #55CAFF;
+  outline-offset: 2px;
+}
+
+/* ========== RODAPÉ MELHORADO ========== */
+
+footer {
+  background: linear-gradient(135deg, #000F27, #01244D);
+  border-top: 1px solid rgba(74, 180, 242, 0.2);
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #4AB4F2;
+}
+
+footer a:hover {
+  color: #55CAFF;
+}
+
+/* ========== RESPONSIVE AJUSTES ========== */
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    gap: 1rem;
+  }
+
+  .filtros-grupo {
+    gap: 0.75rem;
+  }
+
+  .filtro-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .modal {
+    padding: 1.5rem;
+  }
+}
+
+/* ========== COMPATIBILIDADE COM ESTILOS ANTIGOS ========== */
+
+/* Preservar style.css original */
+.navbar {
+  /* Usa estilos do style.css */
+}
+
+.hero,
+.destaque-carousel,
+.card-peixe {
+  /* Compatível com style.css */
+}
+
+/* Lightbox do style.css */
+.lightbox-overlay {
+  z-index: 1999;
+}
+
+.lightbox-container {
+  max-width: 800px;
+  width: 90%;
+}
