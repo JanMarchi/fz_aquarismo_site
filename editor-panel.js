@@ -424,3 +424,166 @@ async function salvarPeixeEditor() {
     carregarListaPeixesEditor();
   }
 }
+
+// ========== ANALYTICS E ESTATÍSTICAS ==========
+function mostrarTelaEstatisticas() {
+  document.getElementById("telaLoginEditor").style.display = "none";
+  document.getElementById("telaCadastroEditor").style.display = "none";
+  document.getElementById("painelGerenciamentoEditor").style.display = "none";
+  document.getElementById("telaEstatisticasEditor").style.display = "block";
+  carregarEstatisticas();
+}
+
+function carregarEstatisticas() {
+  const stats = Analytics.obterEstatisticas();
+
+  // Atualizar números principais
+  document.getElementById("statsTotalAcessos").textContent = stats.total.toLocaleString("pt-BR");
+  document.getElementById("statsUltimos7Dias").textContent = stats.acessosUltimos7Dias;
+  document.getElementById("statsUltimos30Dias").textContent = stats.acessosUltimos30Dias;
+  document.getElementById("statsDiasUnicos").textContent = stats.diasUnicos;
+  document.getElementById("statsMedia").textContent = stats.mediaAcessosPorDia;
+
+  if (stats.ultimoAcesso) {
+    document.getElementById("statsUltimoAcesso").textContent =
+      `${stats.ultimoAcesso.data} às ${stats.ultimoAcesso.hora}`;
+  }
+
+  if (stats.picoDia) {
+    document.getElementById("statsPicoDia").textContent = stats.picoDia;
+  }
+
+  if (stats.picoHora) {
+    document.getElementById("statsPicoHora").textContent = stats.picoHora;
+  }
+
+  // Gráfico de dispositivos
+  gerarGraficoDispositivos(stats.dispositivos);
+
+  // Gráfico de browsers
+  gerarGraficoBrowsers(stats.browsers);
+
+  // Gráfico de acessos por dia da semana
+  gerarGraficoAcessosPorDia(stats.acessosPorDiaSemana);
+
+  // Tabela de acessos por dia
+  gerarTabelaAcessosPorDia(stats.acessosPorDia);
+}
+
+function gerarGraficoDispositivos(dispositivos) {
+  const container = document.getElementById("graficoDispositivos");
+  if (!container) return;
+
+  let html = "<div style='display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px;'>";
+
+  const total = Object.values(dispositivos).reduce((a, b) => a + b, 0);
+  Object.entries(dispositivos).forEach(([device, count]) => {
+    const percentual = ((count / total) * 100).toFixed(1);
+    html += `
+      <div style='display: flex; align-items: center; gap: 12px;'>
+        <span style='font-weight: 600; width: 80px;'>${device}</span>
+        <div style='flex: 1; background: #1a2438; height: 24px; border-radius: 4px; overflow: hidden;'>
+          <div style='background: #1181a2; height: 100%; width: ${percentual}%; transition: width 0.3s;'></div>
+        </div>
+        <span style='width: 80px; text-align: right;'>${count} (${percentual}%)</span>
+      </div>
+    `;
+  });
+
+  html += "</div>";
+  container.innerHTML = html;
+}
+
+function gerarGraficoBrowsers(browsers) {
+  const container = document.getElementById("graficoBrowsers");
+  if (!container) return;
+
+  let html = "<div style='display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px;'>";
+
+  const total = Object.values(browsers).reduce((a, b) => a + b, 0);
+  Object.entries(browsers).forEach(([browser, count]) => {
+    const percentual = ((count / total) * 100).toFixed(1);
+    html += `
+      <div style='display: flex; align-items: center; gap: 12px;'>
+        <span style='font-weight: 600; width: 80px;'>${browser}</span>
+        <div style='flex: 1; background: #1a2438; height: 24px; border-radius: 4px; overflow: hidden;'>
+          <div style='background: #2ecc71; height: 100%; width: ${percentual}%; transition: width 0.3s;'></div>
+        </div>
+        <span style='width: 80px; text-align: right;'>${count} (${percentual}%)</span>
+      </div>
+    `;
+  });
+
+  html += "</div>";
+  container.innerHTML = html;
+}
+
+function gerarGraficoAcessosPorDia(acessosPorDiaSemana) {
+  const container = document.getElementById("graficoAcessosPorDia");
+  if (!container) return;
+
+  const dias = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+  const valores = dias.map(d => acessosPorDiaSemana[d] || 0);
+  const maxValor = Math.max(...valores, 1);
+
+  let html = "<div style='display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 12px;'>";
+
+  dias.forEach((dia, idx) => {
+    const valor = valores[idx];
+    const altura = (valor / maxValor) * 100;
+    html += `
+      <div style='display: flex; flex-direction: column; align-items: center;'>
+        <div style='width: 100%; background: #1a2438; height: 120px; border-radius: 4px; overflow: hidden; margin-bottom: 8px;'>
+          <div style='background: #f39c12; height: ${altura}%; width: 100%; margin-top: auto; transition: height 0.3s;'></div>
+        </div>
+        <span style='font-size: 12px; text-align: center;'>${dia.substring(0, 3)}</span>
+        <span style='font-weight: 600; font-size: 12px;'>${valor}</span>
+      </div>
+    `;
+  });
+
+  html += "</div>";
+  container.innerHTML = html;
+}
+
+function gerarTabelaAcessosPorDia(acessosPorDia) {
+  const container = document.getElementById("tabelaAcessosPorDia");
+  if (!container) return;
+
+  const dados = Object.entries(acessosPorDia)
+    .sort(([dataA], [dataB]) => {
+      const [diaA, mesA, anoA] = dataA.split('/').map(Number);
+      const [diaB, mesB, anoB] = dataB.split('/').map(Number);
+      return new Date(anoB, mesB - 1, diaB) - new Date(anoA, mesA - 1, diaA);
+    })
+    .slice(0, 30); // Últimos 30 dias
+
+  let html = `
+    <div style='margin-top: 12px; max-height: 300px; overflow-y: auto; border: 1px solid #2a3a52; border-radius: 8px;'>
+      <table style='width: 100%; font-size: 13px; border-collapse: collapse;'>
+        <thead>
+          <tr style='background: #1a2438; position: sticky; top: 0;'>
+            <th style='padding: 12px; text-align: left; border-bottom: 1px solid #2a3a52;'>Data</th>
+            <th style='padding: 12px; text-align: right; border-bottom: 1px solid #2a3a52;'>Acessos</th>
+          </tr>
+        </thead>
+        <tbody>
+  `;
+
+  dados.forEach(([data, count]) => {
+    html += `
+      <tr style='border-bottom: 1px solid #2a3a52;'>
+        <td style='padding: 12px;'>${data}</td>
+        <td style='padding: 12px; text-align: right; font-weight: 600;'>${count}</td>
+      </tr>
+    `;
+  });
+
+  html += `
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
