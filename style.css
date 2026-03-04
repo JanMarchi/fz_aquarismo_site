@@ -47,7 +47,7 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg-primary);
-  background-image: url('img/fundo1.jpg');
+  background-image: url('img/fundo1.png');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
