@@ -474,18 +474,42 @@ function gerarGraficoDispositivos(dispositivos) {
   const container = document.getElementById("graficoDispositivos");
   if (!container) return;
 
+  // Garantir que todos os SOs apareçam
+  const todasOS = ["iOS", "Android", "Windows", "macOS", "Linux"];
+  const dadosCompletos = {};
+
+  todasOS.forEach(so => {
+    dadosCompletos[so] = dispositivos[so] || 0;
+  });
+
+  // Adicionar qualquer outro SO que não seja um dos principais
+  Object.entries(dispositivos).forEach(([so, count]) => {
+    if (!todasOS.includes(so)) {
+      dadosCompletos[so] = count;
+    }
+  });
+
   let html = "<div style='display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px;'>";
 
-  const total = Object.values(dispositivos).reduce((a, b) => a + b, 0);
-  Object.entries(dispositivos).forEach(([device, count]) => {
-    const percentual = ((count / total) * 100).toFixed(1);
+  const total = Object.values(dadosCompletos).reduce((a, b) => a + b, 0);
+  const cores = {
+    "iOS": "#555555",
+    "Android": "#4CAF50",
+    "Windows": "#0078D4",
+    "macOS": "#999999",
+    "Linux": "#FCC624"
+  };
+
+  Object.entries(dadosCompletos).forEach(([so, count]) => {
+    const percentual = total > 0 ? ((count / total) * 100).toFixed(1) : 0;
+    const cor = cores[so] || "#1181a2";
     html += `
       <div style='display: flex; align-items: center; gap: 12px;'>
-        <span style='font-weight: 600; width: 80px;'>${device}</span>
+        <span style='font-weight: 600; width: 80px;'>${so}</span>
         <div style='flex: 1; background: #1a2438; height: 24px; border-radius: 4px; overflow: hidden;'>
-          <div style='background: #1181a2; height: 100%; width: ${percentual}%; transition: width 0.3s;'></div>
+          <div style='background: ${cor}; height: 100%; width: ${percentual}%; transition: width 0.3s;'></div>
         </div>
-        <span style='width: 80px; text-align: right;'>${count} (${percentual}%)</span>
+        <span style='width: 100px; text-align: right;'>${count} (${percentual}%)</span>
       </div>
     `;
   });
