@@ -202,7 +202,8 @@ button {
 .hero {
   margin-top: 70px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a2540 0%, #164863 25%, #1b6ca8 50%, #a7d8de 100%);
+  background: linear-gradient(135deg, rgba(0, 15, 39, 0.5), rgba(17, 129, 162, 0.3)),
+              url('img/fundo1.png') center/cover fixed;
   background-attachment: fixed;
   position: relative;
   overflow: hidden;
@@ -213,7 +214,7 @@ button {
   text-align: center;
 }
 
-/* Efeito de água animada */
+/* Efeito de água animada — mais sutil para deixar imagem brilhar */
 .hero::before {
   content: '';
   position: absolute;
@@ -222,9 +223,9 @@ button {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(85, 202, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 30%, rgba(17, 129, 162, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(74, 180, 242, 0.12) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(85, 202, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(17, 129, 162, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(74, 180, 242, 0.06) 0%, transparent 50%);
   animation: waterFlow 15s ease-in-out infinite;
   z-index: 1;
 }
@@ -232,15 +233,15 @@ button {
 @keyframes waterFlow {
   0%, 100% {
     background:
-      radial-gradient(ellipse at 20% 50%, rgba(85, 202, 255, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 30%, rgba(17, 129, 162, 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, rgba(74, 180, 242, 0.12) 0%, transparent 50%);
+      radial-gradient(ellipse at 20% 50%, rgba(85, 202, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(17, 129, 162, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(74, 180, 242, 0.06) 0%, transparent 50%);
   }
   50% {
     background:
-      radial-gradient(ellipse at 25% 45%, rgba(85, 202, 255, 0.2) 0%, transparent 50%),
-      radial-gradient(ellipse at 75% 35%, rgba(17, 129, 162, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 45% 75%, rgba(74, 180, 242, 0.18) 0%, transparent 50%);
+      radial-gradient(ellipse at 25% 45%, rgba(85, 202, 255, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 35%, rgba(17, 129, 162, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 45% 75%, rgba(74, 180, 242, 0.1) 0%, transparent 50%);
   }
 }
 
@@ -292,11 +293,12 @@ button {
   position: relative;
   z-index: 10;
   max-width: 700px;
-  background: rgba(0, 15, 39, 0.75);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 15, 39, 0.85);
+  backdrop-filter: blur(15px);
   padding: var(--space-2xl) var(--space-xl);
   border-radius: 16px;
-  border: 1px solid rgba(74, 180, 242, 0.2);
+  border: 1px solid rgba(74, 180, 242, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
