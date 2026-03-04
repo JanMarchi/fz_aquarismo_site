@@ -460,9 +460,6 @@ function carregarEstatisticas() {
   // Gráfico de dispositivos
   gerarGraficoDispositivos(stats.dispositivos);
 
-  // Gráfico de browsers
-  gerarGraficoBrowsers(stats.browsers);
-
   // Gráfico de acessos por dia da semana
   gerarGraficoAcessosPorDia(stats.acessosPorDiaSemana);
 
