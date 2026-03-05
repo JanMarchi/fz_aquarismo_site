@@ -12,7 +12,7 @@ const Analytics = {
   },
 
   /**
-   * Registra um novo acesso
+   * Registra um novo acesso com geolocalização
    */
   registrarAcesso() {
     const agora = new Date();
@@ -24,6 +24,8 @@ const Analytics = {
       browser: this.detectarBrowser(),
       dispositivo: this.detectarDispositivo(),
       pagina: window.location.pathname,
+      pais: "Detectando...",
+      cidade: "Detectando..."
     };
 
     // Obter histórico de acessos
@@ -45,6 +47,29 @@ const Analytics = {
 
     // Atualizar último acesso
     localStorage.setItem("fz_analytics_ultimo_acesso", JSON.stringify(acesso));
+
+    // Obter geolocalização por IP
+    this.obterGeolocalizacao();
+  },
+
+  /**
+   * Obtém localização do usuário por IP
+   */
+  obterGeolocalizacao() {
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        const acessos = this.obterAcessos();
+        if (acessos.length > 0) {
+          const ultimoAcesso = acessos[acessos.length - 1];
+          ultimoAcesso.pais = data.country_name || "Desconhecido";
+          ultimoAcesso.cidade = data.city || "Desconhecido";
+          ultimoAcesso.ip = data.ip;
+          localStorage.setItem("fz_analytics_acessos", JSON.stringify(acessos));
+          localStorage.setItem("fz_analytics_ultimo_acesso", JSON.stringify(ultimoAcesso));
+        }
+      })
+      .catch(err => console.log("Geolocalização indisponível"));
   },
 
   /**

@@ -600,6 +600,49 @@ function gerarTabelaAcessosPorDia(acessosPorDia) {
     `;
   });
 
+  // Adicionar informações de localização
+  const acessos = JSON.parse(localStorage.getItem('fz_analytics_acessos') || '[]');
+  if (acessos.length > 0) {
+    html += `
+        </tbody>
+      </table>
+    </div>
+
+    <div style='margin-top: 24px; background: var(--color-card-bg); border: 1px solid var(--color-border); border-radius: 12px; padding: 20px;'>
+      <h3 style='margin: 0 0 16px 0; font-size: 14px; color: rgba(255, 255, 255, 0.8);'>🌍 Acessos por Localização</h3>
+      <table style='width: 100%; font-size: 13px; border-collapse: collapse;'>
+        <thead>
+          <tr style='background: #1a2438; position: sticky; top: 0;'>
+            <th style='padding: 12px; text-align: left; border-bottom: 1px solid #2a3a52;'>País</th>
+            <th style='padding: 12px; text-align: left; border-bottom: 1px solid #2a3a52;'>Cidade</th>
+            <th style='padding: 12px; text-align: right; border-bottom: 1px solid #2a3a52;'>Acessos</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    // Contar acessos por país/cidade
+    const localizacoes = {};
+    acessos.forEach(acesso => {
+      const chave = (acesso.pais || 'Desconhecido') + '|' + (acesso.cidade || 'Desconhecido');
+      localizacoes[chave] = (localizacoes[chave] || 0) + 1;
+    });
+
+    Object.entries(localizacoes)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 20)
+      .forEach(([localizacao, count]) => {
+        const [pais, cidade] = localizacao.split('|');
+        html += `
+          <tr style='border-bottom: 1px solid #2a3a52;'>
+            <td style='padding: 12px;'>${pais}</td>
+            <td style='padding: 12px;'>${cidade}</td>
+            <td style='padding: 12px; text-align: right; font-weight: 600;'>${count}</td>
+          </tr>
+        `;
+      });
+  }
+
   html += `
         </tbody>
       </table>
