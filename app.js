@@ -113,7 +113,6 @@ function renderCatalogo(filtros = STATE.filtros) {
           alt="${peixe.nome}"
           class="card-peixe-img"
           loading="lazy"
-          onclick="abrirLightbox('${peixe.id}', 0)"
         />
         <span class="card-badge">${peixe.categoria}</span>
       </div>
