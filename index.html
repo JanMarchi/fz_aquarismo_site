@@ -3,26 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Peixes ornamentais selecionados. Ciclídeos, Bettas, Tetras e muito mais. Entre em contato pelo WhatsApp ou Instagram @fz_aquarismo."
-    />
-    <meta property="og:title" content="FZ Aquarismo" />
-    <meta
-      property="og:description"
-      content="Catálogo de peixes ornamentais de qualidade"
-    />
-    <meta property="og:image" content="img/logo.jpeg" />
+    <meta name="description" content="Peixes ornamentais selecionados em Curitiba. Ciclídeos, Bettas, Tetras e muito mais. Qualidade garantida, entrega combinada. Fale pelo WhatsApp!" />
+    <meta name="keywords" content="peixes ornamentais Curitiba, aquarismo, betta, ciclídeos, tetras, peixes tropicais, aquário Curitiba" />
+    <meta name="author" content="FZ Aquarismo" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://janmarchi.github.io/fz_aquarismo_site/" />
     <meta name="theme-color" content="#000F27" />
     <link rel="icon" href="img/logo.jpeg" />
 
-    <title>FZ Aquarismo — Peixes Ornamentais</title>
+    <title>FZ Aquarismo — Peixes Ornamentais em Curitiba</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://janmarchi.github.io/fz_aquarismo_site/" />
+    <meta property="og:title" content="FZ Aquarismo — Peixes Ornamentais em Curitiba" />
+    <meta property="og:description" content="Peixes ornamentais selecionados com qualidade garantida. Ciclídeos, Bettas, Tetras e muito mais. Entre em contato pelo WhatsApp!" />
+    <meta property="og:image" content="https://janmarchi.github.io/fz_aquarismo_site/img/logo.jpeg" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="FZ Aquarismo" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FZ Aquarismo — Peixes Ornamentais em Curitiba" />
+    <meta name="twitter:description" content="Peixes ornamentais selecionados com qualidade garantida. Fale pelo WhatsApp!" />
+    <meta name="twitter:image" content="https://janmarchi.github.io/fz_aquarismo_site/img/logo.jpeg" />
 
     <!-- Google Fonts com preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Nunito:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -177,14 +189,10 @@
         <div>
           <h2>Sobre a FZ Aquarismo</h2>
           <p>
-            Somos especializados em peixes ornamentais de alta qualidade,
-            selecionados com cuidado para garantir a saúde e beleza de cada
-            espécie. Com anos de experiência, oferecemos espécies variadas para
-            todos os tipos de aquaristas.
+            Bem-vindo à FZ Aquarismo, especialistas em peixes ornamentais de alta qualidade em Curitiba. Somos dedicados a selecionar com cuidado cada espécie para garantir a saúde e beleza, oferecendo uma variedade de peixes tropicais, Ciclídeos, Bettas, Tetras e muitas outras espécies para todos os tipos de aquaristas, desde iniciantes até aquaristas avançados.
           </p>
           <p>
-            Nosso compromisso é fornecer peixes saudáveis e bem aclimatados,
-            além de orientação completa para montar e manter seu aquário.
+            Com anos de experiência no mercado de aquarismo em Curitiba/PR, nosso compromisso é fornecer peixes saudáveis e bem aclimatados, além de orientação completa para montar e manter seu aquário com sucesso. Atendemos entusiastas de aquarismo em toda a região de Curitiba com qualidade garantida e entrega combinada.
           </p>
         </div>
         <div
@@ -400,12 +408,54 @@
       </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="icons.js"></script>
-    <script src="catalogo.js"></script>
-    <script src="auth.js"></script>
-    <script src="analytics.js"></script>
-    <script src="editor-panel.js"></script>
-    <script src="app.js"></script>
+    <!-- Scripts (deferred for better performance) -->
+    <script defer src="icons.js"></script>
+    <script defer src="catalogo.js"></script>
+    <script defer src="auth.js"></script>
+    <script defer src="analytics.js"></script>
+    <script defer src="editor-panel.js"></script>
+    <script defer src="app.js"></script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "FZ Aquarismo",
+      "description": "Especialistas em peixes ornamentais em Curitiba/PR. Ciclídeos, Bettas, Tetras e muito mais, com qualidade garantida.",
+      "url": "https://janmarchi.github.io/fz_aquarismo_site/",
+      "telephone": "+55-41-98891-6268",
+      "image": "https://janmarchi.github.io/fz_aquarismo_site/img/logo.jpeg",
+      "sameAs": ["https://instagram.com/fz_aquarismo"],
+      "areaServed": { "@type": "City", "name": "Curitiba" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-41-98891-6268",
+        "contactType": "customer service",
+        "availableLanguage": "Portuguese"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "priceRange": "$$"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "FZ Aquarismo",
+      "url": "https://janmarchi.github.io/fz_aquarismo_site/"
+    }
+    </script>
   </body>
 </html>

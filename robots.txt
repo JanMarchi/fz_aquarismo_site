@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin.js
+Disallow: /admin.css
+Disallow: /editor-panel.js
+Disallow: /auth.js
+Disallow: /analytics.js
+Disallow: /ADMIN_GUIDE.md
+
+Sitemap: https://janmarchi.github.io/fz_aquarismo_site/sitemap.xml
