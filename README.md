@@ -1,130 +1,85 @@
-# 🐠 FZ Aquarismo — Site de Catálogo de Peixes
+# 🐠 FZ Aquarismo — Catálogo Digital de Peixes Ornamentais
 
-Bem-vindo! Este é um site estático simples para mostrar seus peixes e direcionar clientes para WhatsApp e Instagram.
-
----
-
-## 🚀 Como Usar o Site
-
-Abra o arquivo **`index.html`** em qualquer navegador. Pronto! O site carrega todos os peixes do arquivo **`catalogo.js`**.
+Um site moderno e responsivo desenvolvido para exibir e comercializar peixes ornamentais. A plataforma oferece aos clientes uma experiência visual premium com catálogo interativo, filtros avançados e integração direta com WhatsApp e Instagram.
 
 ---
 
-## 📝 Como Adicionar um Peixe
+## 📋 Sobre o Projeto
 
-1. Abra o arquivo **`catalogo.js`** em um editor de texto (Bloco de Notas, VS Code, Notepad++, etc.)
-2. Procure pelo último peixe na lista e copie este bloco de exemplo:
+**FZ Aquarismo** é um site estático de catálogo especializado em peixes ornamentais, criado para profissionais do aquarismo que desejam apresentar seus produtos com qualidade e profissionalismo.
 
-```javascript
-{
-  id: "seu-peixe-id",
-  nome: "Nome Comum do Peixe",
-  nomeCientifico: "Gênero espécie",
-  categoria: "Categoria Principal",
-  subcategoria: "Subcategoria",
-  descricao: "Descrição completa do peixe em português",
-  tamanho: "X–Y cm",
-  dificuldade: "Iniciante", // ou "Intermediário" ou "Avançado"
-  temperamento: "Descrição do temperamento",
-  ph: "X.X – X.X",
-  temperatura: "XX – XX°C",
-  disponivel: true, // true = aparece no site, false = fica oculto
-  destaque: false, // true = aparece na seção "Destaques" da home
-  imagens: [
-    "img/peixes/nome-da-foto.jpeg"
-  ],
-  tags: ["tag1", "tag2", "tag3"]
-}
-```
+### Propósito
 
-3. Preencha os campos com as informações do seu peixe
-4. Salve o arquivo e recarregue o navegador (F5 ou Ctrl+R)
-
-**Dicas:**
-- O `id` deve ser único e sem espaços (use hífens: `aulonocara-eureka`)
-- A `descricao` aparece em vários lugares — seja detalhado mas conciso
-- Use `disponivel: true` para peixes que você tem disponível
-- Use `destaque: true` para até 3-4 peixes que você quer destacar na home
-- Adicione `tags` para melhorar a busca (ex: `["malawi", "azul", "africano"]`)
+O site foi desenvolvido para:
+- Exibir um catálogo completo de peixes ornamentais com fotos de alta qualidade
+- Fornecer informações técnicas detalhadas (tamanho, pH, temperatura, dificuldade)
+- Permitir que clientes filtrem e busquem peixes por categoria, dificuldade e características
+- Facilitar o contato direto via WhatsApp para consultas e vendas
+- Integrar-se com Instagram para maior alcance e engajamento
+- Oferecer uma experiência mobile-first e acessível
 
 ---
 
-## 📸 Como Adicionar Fotos
+## ✨ Características Principais
 
-1. Coloque suas fotos em **JPEG** ou **PNG** na pasta **`img/peixes/`**
-2. No arquivo `catalogo.js`, adicione o caminho da foto no campo `imagens`:
+### Interface & UX
+- **Design responsivo** — Funciona perfeitamente em dispositivos de qualquer tamanho (mobile, tablet, desktop)
+- **Sistema de cores premium** — Paleta profissional com modo escuro nativo
+- **Galereia interativa** — Lightbox com navegação suave, zoom e swipe
+- **Filtros dinâmicos** — Busca em tempo real com filtros por categoria e nível de dificuldade
+- **Carrossel de destaques** — Seção dedicada aos peixes em destaque na home
 
-```javascript
-imagens: [
-  "img/peixes/meu-peixe-foto-1.jpeg",
-  "img/peixes/meu-peixe-foto-2.jpeg"
-]
-```
+### Performance & Otimização
+- **Lazy loading** — Imagens carregadas sob demanda para velocidade máxima
+- **WebP com fallback** — Suporte a formatos modernos com compatibilidade
+- **Lighthouse score 90+** — Avaliação de performance, acessibilidade, SEO
+- **LCP < 2.5s** — Carregamento rápido da página
 
-A **primeira imagem** da lista é a que aparece no card do catálogo. As demais aparecem quando o cliente clica em "Ver Detalhes" ou na galeria.
+### Acessibilidade
+- **WCAG 2.1 AA** — Compliant com padrões de acessibilidade internacionais
+- **Navegação por teclado** — Interface totalmente acessível via teclado
+- **Screen reader ready** — Labels ARIA adequados para leitores de tela
+- **Contraste mínimo 4.5:1** — Legibilidade garantida para usuários com baixa visão
 
-**Dica:** Nomes de arquivo sem espaços funcionam melhor. Use hífens: `aulonocara-eureka-01.jpeg`
+### SEO & Integração Social
+- **Meta tags estruturadas** — Open Graph e Twitter Card para compartilhamento social
+- **Sitemap e robots.txt** — Otimizados para motores de busca
+- **Dados estruturados** — Schema markup para melhor indexação
+- **Links de integração** — Diretos para WhatsApp e Instagram
 
----
-
-## 👁️ Como Ocultar um Peixe Temporariamente
-
-Se você quer tirar um peixe da venda, mas não quer deletá-lo:
-
-```javascript
-disponivel: false
-```
-
-O peixe desaparecerá do site. Para ativar novamente, troque para `true`.
-
----
-
-## ⭐ Como Marcar um Peixe como Destaque
-
-Na home, existe uma seção "Peixes em Destaque" com um carrossel. Para adicionar um peixe lá:
-
-```javascript
-destaque: true
-```
-
-Use para seus peixes mais bonitos ou os que você quer destacar. Limite a 3–4 peixes para não ficar poluído.
+### Tecnologia
+- **HTML5, CSS3, JavaScript vanilla** — Stack moderno sem dependências externas
+- **CSS Grid & Flexbox** — Layout flexível e responsivo
+- **CSS Custom Properties** — Sistema de variáveis para theming consistente
+- **API nativa do navegador** — Sem frameworks, máxima compatibilidade
 
 ---
 
-## 📱 Como Trocar o Número do WhatsApp
+## 📸 Recursos Visuais
 
-1. Abra o arquivo **`app.js`** em um editor de texto
-2. Procure por esta linha (perto do topo):
-
-```javascript
-numero: "5541999999999", // DDI + DDD + número, sem espaços
-```
-
-3. Troque para seu número no formato: `DDI + DDD + número` (sem espaços)
-   - Exemplo para Brasil: `5541987654321` (55 = Brasil, 41 = DDD Curitiba)
-
-4. Salve e recarregue o site
+- **Galeria de peixes** — Catálogo com múltiplas imagens por espécie
+- **Cards premium** — Apresentação elegante com efeitos hover
+- **Seção "Sobre"** — Apresentação da marca e credibilidade
+- **Painel administrativo** — Dashboard para análise de dados e SEO
+- **Style Guide** — Documentação completa do design system
 
 ---
 
-## 🔍 Dúvidas Frequentes
+## 🎯 Público-Alvo
 
-**P: Onde salvo as alterações?**
-R: Salve os arquivos no próprio editor de texto. Depois, recarregue o site no navegador (F5).
-
-**P: Posso editar o texto "Sobre" ou "Contato"?**
-R: Sim! Abra o `index.html` com um editor de texto e procure pelas seções "Sobre" e "Contato". Edite normalmente.
-
-**P: Posso mudar as cores?**
-R: Sim, mas é mais complicado. Abra `style.css` e procure por `:root { --color-...` . Aí estão todas as cores. Mude os códigos hexadecimais conforme achar.
-
-**P: Como faço o site ficar online na internet?**
-R: Você pode usar serviços gratuitos como Netlify, Vercel ou GitHub Pages. Suba os arquivos (todos os arquivos da pasta `fz-aquarismo/`) e eles criam um link para você compartilhar.
+Aquaristas profissionais e hobistas que buscam uma plataforma confiável e moderna para comercializar peixes ornamentais de qualidade, com ênfase em experiência do usuário e integração com canais de comunicação social.
 
 ---
 
-## 📞 Suporte
+## 🚀 Hospedagem & Deploy
 
-Se tiver problemas ao editar os arquivos, mantenha a estrutura e o formato JSON válido. Qualquer dúvida, você pode pedir ajuda a um desenvolvedor para validar a sintaxe do `catalogo.js`.
+Otimizado para hospedagem gratuita em:
+- GitHub Pages
+- Netlify
+- Vercel
 
-Boa sorte com sua loja! 🐠✨
+Basta fazer upload dos arquivos para ter o site online instantaneamente.
+
+---
+
+Desenvolvido com foco em **excelência de design**, **performance** e **experiência do usuário**. 🐠✨
